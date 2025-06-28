@@ -18,11 +18,11 @@ function App() {
 
 
       <Show above="lg"> {/* show component aside only on large screens */}
-        <GridItem area='aside' bg='gold'>aside</GridItem>
+        <GridItem area='aside' >aside</GridItem>
       </Show>      
 
 
-      <GridItem area='main' bg='red'>main</GridItem>
+      <GridItem area='main' >main</GridItem>
       
 
     </Grid>
