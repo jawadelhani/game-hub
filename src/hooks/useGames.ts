@@ -4,9 +4,10 @@ import { CanceledError } from 'axios';
 
 
 //these are the types of the data we get ,it's defined in the website /api documentation
-interface Game{
+export interface Game{
     id: number;
     name: string;
+    background_image: string;
 }
 interface fetchGamesResponse {
     count: number;
