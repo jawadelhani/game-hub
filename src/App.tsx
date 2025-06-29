@@ -2,8 +2,14 @@ import { Grid, grid, GridItem, Show } from "@chakra-ui/react"
 import NavBar from "./components/NavBar"
 import GameGrid from "./components/GameGrid"
 import GenreList from "./components/GenreList"
+import { useState } from "react"
+import { Genre } from "./hooks/useGenres"
 
 function App() {
+  //to share states between components we level it up to the closet parent ,here between gamegrid and genre it's app(usually)
+  const [selectedGenre,setSelectedGenre]=useState<Genre | null>(null)
+
+
   return (
     //custome names for your area ,architecture of website,column rows like a table:grid
 
@@ -24,13 +30,13 @@ function App() {
 
       <Show above="lg"> {/* show component aside only on large screens */}
         <GridItem area='aside' paddingX={5}>
-          <GenreList />
+          <GenreList onSelectGenre={(genre)=>setSelectedGenre(genre)} /> {/*pass a state from child to parent by this method */}
         </GridItem>
       </Show>      
 
 
       <GridItem area='main' >
-        <GameGrid />
+        <GameGrid selectedGenre={selectedGenre} />
       </GridItem>
       
 

@@ -2,6 +2,7 @@
 //it's also called a module, it can be imported in any component 
 
 import useData from './useData'; 
+import { Genre } from './useGenres';
 
 export interface Platform{
     id: number;
@@ -18,7 +19,9 @@ export interface Game{
 }
 
 
-
-const useGames=()=> useData<Game>('/games');
+//last argument is for dependencies not useffect only on first render , but whenever the genre change if not it's not working
+//params is the parameter that filter data id of selected genre make the filter /url= "/games?genres=4"
+//params type is AxiosRequestConfig 
+const useGames=(selectedGenre: Genre| null)=> useData<Game>('/games',{params:{genres:selectedGenre?.id}},[selectedGenre?.id]); 
 
 export default useGames
