@@ -25,20 +25,24 @@ interface fetchGamesResponse {
 }
 
 const useGames=()=>{
-    const [games, setGames] = useState<Game[]>([]);
+        const [games, setGames] = useState<Game[]>([]);
         const [error, setError] = useState('');
+        const [isLoading, setIsLoading] = useState(false);
     
         useEffect(()=>{
             const controller = new AbortController(); //to cancel the request if the user navigates away from the page
+            setIsLoading(true);
             //we define type of response we get from the api/games
             apiClient.get<fetchGamesResponse>('/games', {signal: controller.signal})
-                .then(res=>setGames(res.data.results))
+                .then(res=> {setGames(res.data.results), setIsLoading(false)})
                 .catch(err => {
                     if (err instanceof CanceledError) return; //to make the controller work instead of typing the erro
-                    setError(err.message)});
+                    setError(err.message)
+                    setIsLoading(false);
+                });
             return () => controller.abort(); //tells Axios:Cancel that request we don’t need it anymore./ It runs when the component will unmount (navigate away) or re render,
         },[]);  
-    return {games, error}
+    return {games, error,isLoading}
 }
 
 export default useGames
