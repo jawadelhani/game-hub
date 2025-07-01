@@ -4,6 +4,7 @@ import GameGrid from "./components/GameGrid"
 import GenreList from "./components/GenreList"
 import { useState } from "react"
 import { Genre } from "./hooks/useGenres"
+import PlatformSelector from "./components/PlatformSelector"
 
 function App() {
   //to share states between components we level it up to the closet parent ,here between gamegrid and genre it's app(usually)
@@ -36,6 +37,7 @@ function App() {
 
 
       <GridItem area='main' >
+        <PlatformSelector /> 
         <GameGrid selectedGenre={selectedGenre} />
       </GridItem>
       
