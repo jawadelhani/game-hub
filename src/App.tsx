@@ -30,7 +30,7 @@ function App() {
 
       <Show above="lg"> {/* show component aside only on large screens */}
         <GridItem area='aside' paddingX={5}>
-          <GenreList onSelectGenre={(genre)=>setSelectedGenre(genre)} /> {/*pass a state from child to parent by this method */}
+          <GenreList onSelectGenre={(genre)=>setSelectedGenre(genre)} selectedGenre={selectedGenre} /> {/*pass a state from child to parent by this method */}
         </GridItem>
       </Show>      
 
