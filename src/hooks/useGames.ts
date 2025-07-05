@@ -22,6 +22,6 @@ export interface Game{
 //last argument is for dependencies not useffect only on first render , but whenever the genre change if not it's not working
 //params is the parameter that filter data id of selected genre make the filter /url= "/games?genres=4"
 //params type is AxiosRequestConfig 
-const useGames=(selectedGenre: Genre| null)=> useData<Game>('/games',{params:{genres:selectedGenre?.id}},[selectedGenre?.id]); 
+const useGames=(selectedGenre: Genre| null,selectedPlatform : Platform|null)=> useData<Game>('/games',{params:{genres:selectedGenre?.id,platforms:selectedPlatform?.id}},[selectedGenre?.id,selectedPlatform?.id]); 
 
 export default useGames
