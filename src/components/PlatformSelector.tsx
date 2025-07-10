@@ -21,7 +21,6 @@ const PlatformSelector = ({onSelectPlatform,selectedPlatform}:Props) => {
                     <MenuItem key={platform.id} onClick={()=>onSelectPlatform(platform)}>{platform.name}</MenuItem>
                 )}
             </MenuList>
-
         </Menu>
     )
 }
