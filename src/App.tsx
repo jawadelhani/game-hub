@@ -56,7 +56,7 @@ function App() {
       </Show>
 
 
-      {/* box only for leftpadding so the elements be aligned  */}
+      {/* box only for leftpadding so the elements be aligned  // flex like HStack */}
       <GridItem area="main">
         <Box paddingLeft={2}>
           <GameHeading gamequery={gameQuery}/>
