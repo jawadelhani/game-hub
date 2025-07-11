@@ -8,9 +8,12 @@ import PlatformSelector from "./components/PlatformSelector";
 import { Platform } from "./hooks/useGames";
 import SortSelector from "./components/SortSelector";
 
+
+//these filters are added in usegame // pass to gamegrid then usegame
 export interface GameQuery {
   genre: Genre | null;
   platform: Platform | null;
+  sortOrder :string
 }
 
 function App() {
@@ -53,7 +56,7 @@ function App() {
       <GridItem area="main">
         <HStack spacing={5} paddingLeft={2} marginBottom={5}>
           <PlatformSelector selectedPlatform={gameQuery.platform} onSelectPlatform={(platform) =>setgameQuery({ ...gameQuery, platform })}/>
-          <SortSelector />
+          <SortSelector selectedSortOrder={gameQuery.sortOrder} OnSelectSortOrder={(sortOrder)=>setgameQuery({...gameQuery,sortOrder})} />
         </HStack>
         <GameGrid gameQuery={gameQuery} />
       </GridItem>

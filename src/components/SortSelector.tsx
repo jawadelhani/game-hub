@@ -1,22 +1,39 @@
-import { Button, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react'
-import { BsChevronDown } from 'react-icons/bs'
+import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
+import { BsChevronDown } from "react-icons/bs";
 
-const SortSelector = () => {
+
+interface Props{
+    selectedSortOrder:string
+    OnSelectSortOrder: (sortOrder:string)=>void
+}
+
+const SortSelector = ({OnSelectSortOrder,selectedSortOrder}:Props) => {
+    //those values are defiend in api
+  const sortOrders = [
+    { value: "", label: "Relevance" },
+    { value: "-added", label: "Date added" },
+    { value: "name", label: "Name" },
+    { value: "-released", label: "Release Date" },
+    { value: "-metacritic", label: "Popularity" },
+    { value: "-rating", label: "Average rating" },
+  ];
+
+  const currentOrder = sortOrders.find(order=>order.value===selectedSortOrder)
 
   return (
     <Menu>
-        <MenuButton as={Button} rightIcon={<BsChevronDown />}>Order by :Relevance</MenuButton>
-        <MenuList>
-            <MenuItem>Relevance</MenuItem>
-            <MenuItem>Date added</MenuItem>
-            <MenuItem>Name</MenuItem>
-            <MenuItem>Release Date</MenuItem>
-            <MenuItem>Popularity</MenuItem>
-            <MenuItem>Average rating</MenuItem>
-        </MenuList>
-
+      <MenuButton as={Button} rightIcon={<BsChevronDown />}>
+        Order by: {currentOrder?.label || 'Relevance'}
+      </MenuButton>
+      <MenuList>
+        {sortOrders.map((order) => (
+          <MenuItem onClick={()=>OnSelectSortOrder(order.value)} key={order.value} value={order.value}>
+            {order.label}
+          </MenuItem>
+        ))}
+      </MenuList>
     </Menu>
-  )
-}
+  );
+};
 
-export default SortSelector
+export default SortSelector;
