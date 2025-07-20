@@ -9,7 +9,7 @@ import platforms from "../data/platforms";
 //then component called in app
 
 
-interface Platform{
+export interface Platform{
     id:number
     name:string
     slug:string

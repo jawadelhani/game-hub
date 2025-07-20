@@ -1,16 +1,11 @@
 //this is called a custom hook, it is a function that starts with "use" and it contains logic that can be reused across components
 //it's also called a module, it can be imported in any component 
-
 import { useQuery } from '@tanstack/react-query';
 import { GameQuery } from '../App';
 import apiClient from '../services/api-client';
 import { fetchResponse } from '../services/api-client';
+import { Platform } from '../hooks/usePlatforms';
 
-export interface Platform{
-    id: number;
-    name: string;
-    slug: string;
-}
 //these are the types of the data we get ,it's defined in the website /api documentation
 export interface Game{
     id: number;
