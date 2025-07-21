@@ -24,6 +24,7 @@ const apiGame= new apiClient<Game>('/games')
 const useGames=(gameQuery :GameQuery)=>
     useInfiniteQuery<fetchResponse<Game>,Error>({
     queryKey:['games',gameQuery],
+    
     queryFn:({pageParam=1})=>
         apiGame.getAll({
                     params:{
@@ -34,10 +35,11 @@ const useGames=(gameQuery :GameQuery)=>
                         page:pageParam
                     }
         }),
+
     getNextPageParam:(lastPage, allpages) => {
         return lastPage.next ? allpages.length + 1 : undefined;        
-    }
+    },
+    staleTime: 24 * 60 * 60 * 1000, //24 hours
 })
-
 
 export default useGames
