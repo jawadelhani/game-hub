@@ -1,6 +1,6 @@
 //this is called a custom hook, it is a function that starts with "use" and it contains logic that can be reused across components
 //it's also called a module, it can be imported in any component 
-import { useQuery } from '@tanstack/react-query';
+import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
 import { GameQuery } from '../App';
 import apiClient,{ fetchResponse } from '../services/api-client';
 import { Platform } from '../hooks/usePlatforms';
@@ -22,18 +22,22 @@ export interface Game{
 const apiGame= new apiClient<Game>('/games')
 
 const useGames=(gameQuery :GameQuery)=>
-    useQuery<fetchResponse<Game>,Error>({
+    useInfiniteQuery<fetchResponse<Game>,Error>({
     queryKey:['games',gameQuery],
-    queryFn:()=>
+    queryFn:({pageParam=1})=>
         apiGame.getAll({
                     params:{
                         genres:gameQuery.genre?.id, 
                         parent_platforms:gameQuery.platform?.id, 
                         ordering:gameQuery.sortOrder,
-                        search:gameQuery.searchText
+                        search:gameQuery.searchText,
+                        page:pageParam
                     }
-                })   
-    })
+        }),
+    getNextPageParam:(lastPage, allpages) => {
+        return lastPage.next ? allpages.length + 1 : undefined;        
+    }
+})
 
 
 export default useGames
