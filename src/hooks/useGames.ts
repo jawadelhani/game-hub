@@ -1,7 +1,8 @@
 //this is called a custom hook, it is a function that starts with "use" and it contains logic that can be reused across components
 //it's also called a module, it can be imported in any component 
-import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
+import { useInfiniteQuery } from '@tanstack/react-query';
 import { GameQuery } from '../App';
+import ms from 'ms';
 import apiClient,{ fetchResponse } from '../services/api-client';
 import { Platform } from '../hooks/usePlatforms';
 
@@ -39,7 +40,7 @@ const useGames=(gameQuery :GameQuery)=>
     getNextPageParam:(lastPage, allpages) => {
         return lastPage.next ? allpages.length + 1 : undefined;        
     },
-    staleTime: 24 * 60 * 60 * 1000, //24 hours
+    staleTime:ms("24h"),
 })
 
 export default useGames
