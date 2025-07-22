@@ -4,10 +4,10 @@ import getComputedStyle from "../services/image-url";
 
 interface Props{
     onSelectGenre: (genre:Genre)=> void
-    selectedGenre: Genre | null;
+    selectedGenreID?: number;
 }
 
-const GenreList = ( {onSelectGenre,selectedGenre}:Props) => {
+const GenreList = ( {onSelectGenre,selectedGenreID}:Props) => {
     const {data,error,isLoading}= useGenres();
 
     if(error) return null
@@ -22,7 +22,7 @@ const GenreList = ( {onSelectGenre,selectedGenre}:Props) => {
                         <ListItem key={genre.id} paddingY='5px'>
                             <HStack>
                                 <Image boxSize='32px' objectFit='cover' borderRadius={8} src={getComputedStyle(genre.image_background)}/>
-                                <Button whiteSpace='normal' textAlign='left' fontWeight={genre.id===selectedGenre?.id ? 'bold' :'normal' } onClick={()=>onSelectGenre(genre)} fontSize='lg' variant='link'>{genre.name}</Button>
+                                <Button whiteSpace='normal' textAlign='left' fontWeight={genre.id===selectedGenreID ? 'bold' :'normal' } onClick={()=>onSelectGenre(genre)} fontSize='lg' variant='link'>{genre.name}</Button>
                             </HStack>
                         </ListItem>
                     )
