@@ -5,7 +5,6 @@ import GameCardSkeleton from './GameCardSkeleton';
 import GameCardContainer from './GameCardContainer';
 import React from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component'; //infinite scroll
-import useGameQueryStore from '../store';
 
 // pass states from app to game grid with different variable, with gameQuery it's refactoring to one variable
 // interface Props{
@@ -16,8 +15,6 @@ import useGameQueryStore from '../store';
 
 
 const GameGrid = () => {
-
-  const gameQuery=useGameQueryStore(s=>s.gameQuery)
 
   const {data,error,isLoading,isFetchingNextPage,fetchNextPage,hasNextPage} = useGames();
   const skeletons=[1,2,3,4,5,6,7,8]
