@@ -11,7 +11,7 @@ const router =createBrowserRouter([
         element: <Layout />,
         children:[                                       // childrens are render in the outlet of Layout
             {index: true, element: <HomePage />},        //index: true means this is the default route
-            {path:"games/:id",element:<GameDetailPage />}
+            {path:"games/:slug",element:<GameDetailPage />}
         ],
         errorElement:<ErrorPage />
     }

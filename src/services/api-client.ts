@@ -26,6 +26,11 @@ class apiClient<T>{
             .get<fetchResponse<T>>(this.endpoint, params )
             .then(res => res.data);
     };
+    get =(id:number | string)=>{
+        return axiosInsctance
+                .get<T>(this.endpoint + '/' + id )
+                .then(res => res.data); 
+    }
 }
 
 export default apiClient;
