@@ -2,18 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import ms from 'ms';
 import apiClient from "../services/api-client";
 import platforms from "../data/platforms";
-
-//principe of hooks
-// define interface of data you are fetching ,then fetch it
-//call it in it's component
-//then component called in app
-
-
-export interface Platform{
-    id:number
-    name:string
-    slug:string
-}
+import { Platform } from "../entities/Platform";
 
 const apiPlatform= new apiClient<Platform>('/platforms/lists/parents');
 

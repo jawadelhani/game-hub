@@ -3,20 +3,8 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
 import ms from 'ms';
 import apiClient,{ fetchResponse } from '../services/api-client';
-import { Platform } from '../hooks/usePlatforms';
 import useGameQueryStore from '../store';
-
-//these are the types of the data we get ,it's defined in the website /api documentation
-export interface Game{
-    id: number;
-    name: string;
-    background_image: string;
-    parent_platforms: {platform: Platform}[];
-    metacritic:number
-    slug: string;   
-    description_raw:string
-}
-
+import { Game } from '../entities/Game';
 
 //last argument is for dependencies not useffect only on first render , but whenever the genre change if not it's not working
 //params is the parameter that filter data id of selected genre make the filter /url= "/games?genres=4"
