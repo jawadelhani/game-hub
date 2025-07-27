@@ -1,24 +1,28 @@
-import { useParams } from "react-router-dom"
-import useGame from "../hooks/useGame"
-import { Heading, Spinner, Text } from "@chakra-ui/react"
-import ExpandableText from "../components/ExpandableText"
+import { useParams } from "react-router-dom";
+import useGame from "../hooks/useGame";
+import { Heading, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
+import ExpandableText from "../components/ExpandableText";
+import DefinitionItem from "../components/DefinitionItem";
+import CriticScore from "../components/CriticScore";
+import GameAttributes from "../components/GameAttributes";
 
 const GameDetailPage = () => {
-    const {slug}=useParams()
+  const { slug } = useParams();
 
-    const {data:game,isLoading,error}=useGame(slug!)   //slug! means slug can not be null or undefined  
-    
-    if(isLoading) return <Spinner />
+  const { data: game, isLoading, error } = useGame(slug!); //slug! means slug can not be null or undefined
 
-    if(error || !game) throw error;  
+  if (isLoading) return <Spinner />;
 
-    return (
-        <>
-            <Heading>{game.name}</Heading>
-            <ExpandableText>{game.description_raw}</ExpandableText>
-            
-        </>
-    )
-}
+  if (error || !game) throw error;
 
-export default GameDetailPage
+  return (
+    <>
+      <Heading>{game.name}</Heading>
+      <ExpandableText>{game.description_raw}</ExpandableText>
+      <GameAttributes game={game} />
+      
+    </> 
+  );
+};
+
+export default GameDetailPage;
