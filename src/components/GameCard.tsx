@@ -1,6 +1,6 @@
 //do in import {} if it's returning an oject ,many atributs if not then no {}
 import { Card, CardBody, Heading, HStack, Image, Text } from "@chakra-ui/react";
-import { Game } from '../entities/Game';
+import Game from '../entities/Game';
 import PlatformIconList from "./PlatformIconList";
 import CriticScore from "./CriticScore";
 import getCroppedImageUrl from "../services/image-url";

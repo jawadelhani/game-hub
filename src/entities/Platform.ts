@@ -3,7 +3,7 @@
 //call it in it's component
 //then component called in app
 
-export interface Platform {
+export default interface Platform {
     id: number;
     name: string;
     slug: string;
