@@ -2,7 +2,7 @@
 
 A modern video game discovery web application built with React 18, TypeScript, and Chakra UI. Discover new and interesting games with advanced filtering options by platform, genre, and more.
 
-![Game Hub Screenshot](https://via.placeholder.com/800x400/1a202c/ffffff?text=Game+Hub+Preview)
+![Game Hub Screenshot](https://github.com/jawadelhani/game-hub/issues/1#issue-3311156311)
 
 ## ✨ Features
 
